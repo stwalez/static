@@ -9,7 +9,9 @@ pipeline {
             ls -lah
          '''
         withAWS(region:'eu-west-1', credentials:'aws-static') {
-            s3Upload(file:'index.html', bucket:'walejenkinstest', path:'/')
+            
+            s3Delete(file:'index.html', bucket:'walejenkinstest', path:'/')
+            s3Upload(file:'index.html', bucket:'walejenkinstest')
         }
         
       }
